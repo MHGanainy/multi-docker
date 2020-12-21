@@ -12,12 +12,12 @@ script:
   - docker run -e CI=true se7s/complex npm run test
 
 after_success:
-  - docker build -t se7s/multi-client ./client
-  - docker build -t se7s/multi-nginx ./nginx
-  - docker build -t se7s/multi-server ./server
-  - docker build -t se7s/multi-worker ./worker
+  - docker build -t 571998/multi-docker:client ./client
+  - docker build -t 571998/multi-docker:nginx ./nginx
+  - docker build -t 571998/multi-docker:server ./server
+  - docker build -t 571998/multi-docker:worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push se7s/multi-client
-  - docker push se7s/multi-nginx
-  - docker push se7s/multi-server
-  - docker push se7s/multi-worker 
+  - docker push 571998/multi-docker:client
+  - docker push 571998/multi-docker:nginx
+  - docker push 571998/multi-docker:server
+  - docker push 571998/multi-docker:worker
